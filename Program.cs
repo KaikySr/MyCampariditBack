@@ -1,25 +1,42 @@
+using backEnd;
+using backEnd.Model;
+using backEnd.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Adding CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MainPolicy",
+        policy =>
+        {
+            policy
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+        });
+});
+
+builder.Services.AddScoped<MyCampariditContext>(); // Shared Context
+
+builder.Services.AddTransient<PostController>(); // Create class every req
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseCors();
+// app.UseSwagger(); // Swagger for debug
+// app.UseSwaggerUI(); // Swagger for debug
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
