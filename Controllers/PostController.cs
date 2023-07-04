@@ -22,7 +22,7 @@ public class PostController : ControllerBase
 
         var query = from post in context.Posts 
             join criador in context.Usuarios on post.IdCriador equals criador.Id
-            select new PostDTO(post.Titulo, post.Conteudo, post.Foto, criador.Usuario1, criador.Foto);
+            select new PostDTO(post.Conteudo, post.Foto, criador.Usuario1, criador.Foto);
             
         return query.ToList();
     }

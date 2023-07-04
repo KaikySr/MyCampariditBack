@@ -35,7 +35,7 @@ public partial class MyCampariditContext : DbContext
     {
         modelBuilder.Entity<Cargo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__cargos__3214EC07A6AFCA32");
+            entity.HasKey(e => e.Id).HasName("PK__cargos__3214EC0772B8AE09");
 
             entity.ToTable("cargos");
 
@@ -46,32 +46,32 @@ public partial class MyCampariditContext : DbContext
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Cargos)
                 .HasForeignKey(d => d.IdForum)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__cargos__IdForum__403A8C7D");
+                .HasConstraintName("FK__cargos__IdForum__52593CB8");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Cargos)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__cargos__IdUsuari__3F466844");
+                .HasConstraintName("FK__cargos__IdUsuari__5165187F");
         });
 
         modelBuilder.Entity<CargosXpermisso>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CargosXp__3214EC077FE9CD3F");
+            entity.HasKey(e => e.Id).HasName("PK__CargosXp__3214EC074D05B30C");
 
             entity.HasOne(d => d.IdCargoNavigation).WithMany(p => p.CargosXpermissos)
                 .HasForeignKey(d => d.IdCargo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CargosXpe__IdCar__44FF419A");
+                .HasConstraintName("FK__CargosXpe__IdCar__571DF1D5");
 
             entity.HasOne(d => d.IdPermissoesNavigation).WithMany(p => p.CargosXpermissos)
                 .HasForeignKey(d => d.IdPermissoes)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CargosXpe__IdPer__45F365D3");
+                .HasConstraintName("FK__CargosXpe__IdPer__5812160E");
         });
 
         modelBuilder.Entity<Forum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__forum__3214EC07B2ADFD7F");
+            entity.HasKey(e => e.Id).HasName("PK__forum__3214EC076291E21B");
 
             entity.ToTable("forum");
 
@@ -86,14 +86,14 @@ public partial class MyCampariditContext : DbContext
 
         modelBuilder.Entity<Permisso>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__permisso__3214EC0790EA7553");
+            entity.HasKey(e => e.Id).HasName("PK__permisso__3214EC07B6136189");
 
             entity.ToTable("permissoes");
         });
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__post__3214EC07D1EC4D22");
+            entity.HasKey(e => e.Id).HasName("PK__post__3214EC075C14FDAC");
 
             entity.ToTable("post");
 
@@ -103,24 +103,21 @@ public partial class MyCampariditContext : DbContext
             entity.Property(e => e.Foto)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-            entity.Property(e => e.Titulo)
-                .HasMaxLength(255)
-                .IsUnicode(false);
 
             entity.HasOne(d => d.IdCriadorNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdCriador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__post__IdCriador__3B75D760");
+                .HasConstraintName("FK__post__IdCriador__4D94879B");
 
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdForum)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__post__IdForum__3C69FB99");
+                .HasConstraintName("FK__post__IdForum__4E88ABD4");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__usuario__3214EC07C021797F");
+            entity.HasKey(e => e.Id).HasName("PK__usuario__3214EC079EC8DD74");
 
             entity.ToTable("usuario");
 

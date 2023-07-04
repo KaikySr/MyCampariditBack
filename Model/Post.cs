@@ -13,8 +13,6 @@ public partial class Post
 
     public int? Likes { get; set; }
 
-    public string? Titulo { get; set; }
-
     public string? Conteudo { get; set; }
 
     public string? Foto { get; set; }
