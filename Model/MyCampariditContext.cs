@@ -35,7 +35,7 @@ public partial class MyCampariditContext : DbContext
     {
         modelBuilder.Entity<Cargo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__cargos__3214EC0772B8AE09");
+            entity.HasKey(e => e.Id).HasName("PK__cargos__3214EC07C92C68A9");
 
             entity.ToTable("cargos");
 
@@ -46,36 +46,38 @@ public partial class MyCampariditContext : DbContext
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Cargos)
                 .HasForeignKey(d => d.IdForum)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__cargos__IdForum__52593CB8");
+                .HasConstraintName("FK__cargos__IdForum__5441852A");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Cargos)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__cargos__IdUsuari__5165187F");
+                .HasConstraintName("FK__cargos__IdUsuari__534D60F1");
         });
 
         modelBuilder.Entity<CargosXpermisso>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CargosXp__3214EC074D05B30C");
+            entity.HasKey(e => e.Id).HasName("PK__CargosXp__3214EC072C9433C8");
 
             entity.HasOne(d => d.IdCargoNavigation).WithMany(p => p.CargosXpermissos)
                 .HasForeignKey(d => d.IdCargo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CargosXpe__IdCar__571DF1D5");
+                .HasConstraintName("FK__CargosXpe__IdCar__59063A47");
 
             entity.HasOne(d => d.IdPermissoesNavigation).WithMany(p => p.CargosXpermissos)
                 .HasForeignKey(d => d.IdPermissoes)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CargosXpe__IdPer__5812160E");
+                .HasConstraintName("FK__CargosXpe__IdPer__59FA5E80");
         });
 
         modelBuilder.Entity<Forum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__forum__3214EC076291E21B");
+            entity.HasKey(e => e.Id).HasName("PK__forum__3214EC073225BFDF");
 
             entity.ToTable("forum");
 
-            entity.Property(e => e.DataCriado).HasColumnType("datetime");
+            entity.Property(e => e.DataCriado)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Descricao)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -86,20 +88,23 @@ public partial class MyCampariditContext : DbContext
 
         modelBuilder.Entity<Permisso>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__permisso__3214EC07B6136189");
+            entity.HasKey(e => e.Id).HasName("PK__permisso__3214EC07D4FA7A9D");
 
             entity.ToTable("permissoes");
         });
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__post__3214EC075C14FDAC");
+            entity.HasKey(e => e.Id).HasName("PK__post__3214EC078C2A59FD");
 
             entity.ToTable("post");
 
             entity.Property(e => e.Conteudo)
                 .HasMaxLength(255)
                 .IsUnicode(false);
+            entity.Property(e => e.DataCriado)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Foto)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -107,17 +112,17 @@ public partial class MyCampariditContext : DbContext
             entity.HasOne(d => d.IdCriadorNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdCriador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__post__IdCriador__4D94879B");
+                .HasConstraintName("FK__post__DataCriado__4F7CD00D");
 
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdForum)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__post__IdForum__4E88ABD4");
+                .HasConstraintName("FK__post__IdForum__5070F446");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__usuario__3214EC079EC8DD74");
+            entity.HasKey(e => e.Id).HasName("PK__usuario__3214EC07BB35452A");
 
             entity.ToTable("usuario");
 

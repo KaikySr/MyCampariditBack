@@ -17,6 +17,8 @@ public partial class Post
 
     public string? Foto { get; set; }
 
+    public DateTime? DataCriado { get; set; }
+
     public virtual Usuario IdCriadorNavigation { get; set; } = null!;
 
     public virtual Forum IdForumNavigation { get; set; } = null!;

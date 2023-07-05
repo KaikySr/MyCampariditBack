@@ -8,12 +8,15 @@ public class PostDTO
 
     public string FotoCriador { get; set; }
 
-    public PostDTO(string conteudo, string foto, string criador, string fotoCriador)
+    public string Forum { get; set; }
+
+    public PostDTO(string conteudo, string foto, string criador, string fotoCriador, string forumName)
     {
         Conteudo = conteudo;
         Foto = foto;
         Criador = criador;
         FotoCriador = fotoCriador;
+        Forum =  forumName;
     }
 }
 

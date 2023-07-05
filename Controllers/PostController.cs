@@ -20,9 +20,9 @@ public class PostController : ControllerBase
         // Titulo Conteudo... de Posts
         // Criador e FotoCriador de Usuarios
 
-        var query = from post in context.Posts 
+        var query = from post in context.Posts
             join criador in context.Usuarios on post.IdCriador equals criador.Id
-            select new PostDTO(post.Conteudo, post.Foto, criador.Usuario1, criador.Foto);
+            select new PostDTO(post.Conteudo, post.Foto, criador.Usuario1, criador.Foto, post.IdForumNavigation.Nome);
             
         return query.ToList();
     }
