@@ -26,10 +26,10 @@ public class ForumController : ControllerBase
     public List<ForumDTO> Filter(string nomeForum)
     {
         var query = from forum in context.Forums
-        where forum.Nome.Contains(nomeForum)
-        select new ForumDTO(forum.Nome, forum.Descricao);
-       
-       return query.ToList();
+            where forum.Nome.Contains(nomeForum)
+            select new ForumDTO(forum.Nome, forum.Descricao);
+
+        return query.ToList();
     }
 
     

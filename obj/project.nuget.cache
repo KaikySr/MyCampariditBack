@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rT/heCLO7OO5L0dyLQ4pfnzPuHoborvh4b7dhWGqbNu5RT5kaBFWLOoYa0g1133j5IyemstCdxWW8XLmoGpppA==",
+  "dgSpecHash": "o2VTrijGancU/lvdgEiL6LXBbeDEMOkKLjgZCzXHmULY5rK3Etdf+mqE5iR3+eFN0PAC68Vhqus/hPK8XPHjFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\disrct\\Desktop\\Projeto\\backEnd\\backEnd.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\security-jwt\\0.1.0\\security-jwt.0.1.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

@@ -2,6 +2,7 @@ using backEnd.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Security.Jwt;
 
 namespace backEnd.Controllers;
 
@@ -14,7 +15,9 @@ public class PostController : ControllerBase
     public PostController(MyCampariditContext context) => this.context = context;
 
     [HttpGet("")]
-    public List<PostDTO> Get()
+    public List<PostDTO> Get(
+        // [FromServices]JwtService jwt
+    )
     {
         // Query pra pegar um PostDTO
         // Titulo Conteudo... de Posts
