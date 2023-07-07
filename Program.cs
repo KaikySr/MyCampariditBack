@@ -54,6 +54,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<MyCampariditContext>(); // Shared Context
 builder.Services.AddTransient<PostController>(); // Create class every req
 
+builder.Services.AddTransient<IRepository<Usuario>, UserRepository>();
+
 builder.Services.AddTransient<JwtService>();
 builder.Services.AddTransient<IPasswordProvider, PasswordProvider>(
     p => new PasswordProvider("asdfasdeubfqubdc")

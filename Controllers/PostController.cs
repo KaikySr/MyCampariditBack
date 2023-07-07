@@ -15,20 +15,34 @@ public class PostController : ControllerBase
     public PostController(MyCampariditContext context) => this.context = context;
 
     [HttpGet("")]
-    public List<PostDTO> Get(
-        // [FromServices]JwtService jwt
-    )
+    public List<PostDTO> Get()
     {
-        // Query pra pegar um PostDTO
-        // Titulo Conteudo... de Posts
-        // Criador e FotoCriador de Usuarios
-
         var query = from post in context.Posts
             join criador in context.Usuarios on post.IdCriador equals criador.Id
-            select new PostDTO(post.Conteudo, post.Foto, criador.Usuario1, criador.Foto, post.IdForumNavigation.Nome);
+            select new PostDTO(post.Conteudo, post.Foto, criador.Usuario1, post.IdForumNavigation.Nome);
             
         return query.ToList();
     }
 
-    
+    [HttpPost("addPost")]
+    public async Task<ActionResult<PostDTO>> AddPost(
+        [FromBody] PostDTO data,
+        [FromServices] IRepository<Post> repo,
+        [FromServices] UserService userService,
+        [FromServices] ForumService forumService
+    )
+    {
+        var userId = await userService.GetIdByUsername(data.Criador);
+        var forumId = await forumService.GetIdByForum(data.Forum);
+
+        var post = new Post
+        {
+            Conteudo = data.Conteudo,
+            IdCriador = userId,
+            IdForum = forumId
+        };
+
+        await repo.Add(post);
+        return Ok();
+    }
 }

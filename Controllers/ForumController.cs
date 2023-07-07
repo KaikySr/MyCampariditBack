@@ -32,5 +32,21 @@ public class ForumController : ControllerBase
         return query.ToList();
     }
 
+       [HttpPost("createForum")]
+    public async Task<ActionResult<ForumDTO>> CreateForum(
+        [FromBody] ForumDTO data,
+        [FromServices] IRepository<Forum> repo
+    )
+    {
+
+        var forum = new Forum
+        {
+            Nome = data.Nome,
+            Descricao = data.Descricao
+        };
+
+        await repo.Add(forum);
+        return Ok();
+    }
     
 }
